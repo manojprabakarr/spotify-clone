@@ -1,9 +1,8 @@
-// 97c01f92dd6c49c5b586d9110d5072b5-clientid
-// 9386f3a844584f948dd2d4b6c59d5640-clientsecret
+
 
 export const authpoint=`https://accounts.spotify.com/authorize`
 
-const clientId=  " 97c01f92dd6c49c5b586d9110d5072b5";
+const clientId=  "97c01f92dd6c49c5b586d9110d5072b5";
 
 const redirect ="http://localhost:3000/"
 
@@ -16,6 +15,17 @@ const scopes = [
     "user-modify-playback-state",
   ];
 
+  export const getTokenFromResponse = () => {
+    return window.location.hash
+      .substring(1)
+      .split("&")
+      .reduce((initial, item) => {
+        var parts = item.split("=");
+        initial[parts[0]] = decodeURIComponent(parts[1]);
+  
+        return initial;
+      }, {});
+  };
 
 
 
