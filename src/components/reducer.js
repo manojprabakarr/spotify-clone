@@ -1,12 +1,16 @@
-import { CallToActionSharp } from "@material-ui/icons";
+
 
 export const initialstate ={
     user:null,
-    //token:'BQCJDNxFrfEmVqbe0kC_YwhYDIpelNUQnULMiqmnhLig3AJsMRoqh1YL1TporwOsYpt3Dig47iUH8UrZHHxRGl7EVPxpcn6fdAlLtFe0-S7fkA6mV0jfrU7jCGG6bWVafTdBFdmZe9HYPg_91lxSrzpaH3tQq113Hgt6zUe0s3lEId1u',
+    token:null,
     playlist:[],
     item:null,
     discover_weekly: null,
-    playing:false
+    playing:false,
+   
+
+   
+  
 };
 
 
@@ -34,7 +38,7 @@ const reducer =(state ,action ) => {
                             ...state,
                             discover_weekly:action.discover_weekly
                         }
-            
+                       
             default:
             return state;
     }

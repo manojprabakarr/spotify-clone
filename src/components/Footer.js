@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './footer.css'
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
@@ -10,11 +10,13 @@ import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 
 import { Grid, Slider } from "@material-ui/core";
+import { useDatalayerValue } from './datalayer';
 
 
 
 
-function Footer() {
+function Footer({s}) {
+  
     return (
         <div className="footer">
             <div className="footer__left">
