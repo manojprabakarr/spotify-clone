@@ -13,7 +13,7 @@ const s =new spotify();
 function App() {
 
   
-  const [{user,token,item,playing},dispatch]=useDatalayerValue();
+  const [{user,token},dispatch]=useDatalayerValue();
 
   useEffect(() => {
     const hash =getTokenFromResponse();
@@ -54,18 +54,7 @@ function App() {
       playlists:playlists
     })
   })
-  s.getMyCurrentPlaybackState().then((r)=>{
-    console.log("playback",r)
-    dispatch({
-      type: "SET_PLAYING",
-      playing: r.is_playing,
-    });
-
-    dispatch({
-      type: "SET_ITEM",
-      item: r.item,
-    });
-  })
+ 
 
 }
 
@@ -80,7 +69,7 @@ function App() {
      
      {
         token ? (
-       <Player spotify={s}/>
+       <Player s={s}/>
          ):(
           <Login/>
 

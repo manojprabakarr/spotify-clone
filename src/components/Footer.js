@@ -18,6 +18,22 @@ import {useDatalayerValue} from './datalayer'
 function Footer({s}) {
   const [{ token, item, playing }, dispatch] = useDatalayerValue();
 
+  useEffect(() => {
+    s.getMyCurrentPlaybackState().then((r) => {
+      console.log(r);
+
+      dispatch({
+        type: "SET_PLAYING",
+        playing: r.is_playing,
+      });
+
+      dispatch({
+        type: "SET_ITEM",
+        item: r.item,
+      });
+    });
+  }, [s]);
+
 
   const handlePlayPause = () => {
     if (playing) {

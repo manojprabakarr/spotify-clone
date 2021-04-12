@@ -9,6 +9,29 @@ import Songrow from './Songrow'
 
 function Body({s}) {
     const [ {discover_weekly},dispatch]=useDatalayerValue();
+
+
+    const playPlaylist = (id) => {
+      s
+        .play({
+          context_uri: `s:playlist:7HFqo5r7S9aVzOF4y7dSlF`,
+        })
+        .then((res) => {
+          s.getMyCurrentPlayingTrack().then((r) => {
+            dispatch({
+              type: "SET_ITEM",
+              item: r.item,
+            });
+            dispatch({
+              type: "SET_PLAYING",
+              playing: true,
+            });
+          });
+        });
+    };
+
+    
+
     const playSong = (id) => {
       s.play({
           uris: [`spotify:track:${id}`],
@@ -46,7 +69,7 @@ function Body({s}) {
           <PlayCircleFilledIcon
             className="body__shuffle"
            
-           
+            onClick={playPlaylist}
           />
           <FavoriteIcon fontSize="large" />
           <MoreHorizIcon />
