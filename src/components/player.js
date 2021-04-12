@@ -4,17 +4,17 @@ import  './player.css'
 import Sidebar from './sidebar'
 import Footer from './Footer'
 
-function player({spotify}) {
+function player({s}) {
     return (
 
         <div className="player">
             <div className="player-body">
             <Sidebar/>
-            <Body/>
+            <Body s={s}/>
 
             </div>
            
-           <Footer/>
+           <Footer s={s}/>
            
           
         </div>

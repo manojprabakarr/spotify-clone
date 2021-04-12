@@ -10,50 +10,71 @@ import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 
 import { Grid, Slider } from "@material-ui/core";
-import { useDatalayerValue } from './datalayer';
+import {useDatalayerValue} from './datalayer'
 
 
 
 
 function Footer({s}) {
-  
+  const [{ token, item, playing }, dispatch] = useDatalayerValue();
+
+
+  const handlePlayPause = () => {
+    if (playing) {
+      s.pause();
+      dispatch({
+        type: "SET_PLAYING",
+        playing: false,
+      });
+    } else {
+      s.play();
+      dispatch({
+        type: "SET_PLAYING",
+        playing: true,
+      });
+    }
+  };
+
+ 
+ 
     return (
         <div className="footer">
             <div className="footer__left">
         <img
           className="footer__albumLogo"
-          src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
-          alt=""
+          src={item?.album.images[0].url}
+          alt={item?.name}
         />
        
+       {item ? (
           <div className="footer__songInfo">
-            <h4>name</h4>
-            <p>artist</p>
+            <h4>{item.name}</h4>
+            <p>{item.artists.map((artist) => artist.name).join(", ")}</p>
           </div>
-      
+        ) : (
           <div className="footer__songInfo">
             <h4>No song is playing</h4>
             <p>...</p>
           </div>
-       
+        )}
       </div>
 
       <div className="footer__center">
         <ShuffleIcon className="footer__green" />
         <SkipPreviousIcon className="footer__icon" />
-        
+        {playing ? (
           <PauseCircleOutlineIcon
-           
+            onClick={handlePlayPause}
             fontSize="large"
             className="footer__icon"
           />
-      
+        ):(
           <PlayCircleOutlineIcon
-           
+             onClick={handlePlayPause}
             fontSize="large"
             className="footer__icon"
           />
-       
+        )}
         <SkipNextIcon className="footer__icon" />
         <RepeatIcon className="footer__green" />
       </div>

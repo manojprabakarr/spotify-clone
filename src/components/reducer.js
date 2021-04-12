@@ -38,6 +38,16 @@ const reducer =(state ,action ) => {
                             ...state,
                             discover_weekly:action.discover_weekly
                         }
+                        case 'SET_PLAYING' :
+                            return {
+                                ...state,
+                                set_playing:action.set_playing
+                            }
+                            case 'SET_ITEM' :
+                                return {
+                                    ...state,
+                                    set_item:action.set_item
+                                }
                        
             default:
             return state;
