@@ -69,11 +69,10 @@ function App() {
 
 }
 
-    console.log("the tokrn is here",token)
+  
    
   },[])
-  console.log("user",user)
-  console.log("token",token)
+ 
 
 
   return (
